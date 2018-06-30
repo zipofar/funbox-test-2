@@ -12,7 +12,7 @@ const store = createStore(RootReducer, devtoolMiddleware);
 
 ReactDOM.render(
     <Provider store = { store }>
-        <App ym={window.ymaps}/>
+        <App ymaps = { window.ymaps }/>
     </Provider>,
     document.getElementById('root'),
 );

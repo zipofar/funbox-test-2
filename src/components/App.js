@@ -9,11 +9,13 @@ export default class App extends React.Component
         return(
             <div className='container'>
                 <div className='row'>
-                    <div className='col-sm col-md-5'>
-                        <AddPoint/>
+                    <div className='col'>
+                        <AddPoint ymaps ={ this.props.ymaps } />
                     </div>
-                    <div className='col-sm col-md-7'>
-                        <Map ym ={ this.props.ym } />
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        <Map ymaps ={ this.props.ymaps } />
                     </div>
                 </div>
             </div>

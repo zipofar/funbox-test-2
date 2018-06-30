@@ -4,7 +4,7 @@ export default class Map extends React.Component
 {
 
     renderMap = () => {
-        const ymaps = this.props.ym;
+        const { ymaps } = this.props;
         ymaps.ready(init);
         function init(){
             const myMap = new ymaps.Map("map", {
@@ -16,13 +16,8 @@ export default class Map extends React.Component
                 hintContent: 'Содержимое всплывающей подсказки',
                 balloonContent: 'Содержимое балуна'
             });
-            const myPlacemark2 = new ymaps.Placemark([55.77, 37.65], {
-                hintContent: 'Содержимое всплывающей подсказки',
-                balloonContent: 'Содержимое балуна'
-            });
 
             myMap.geoObjects.add(myPlacemark);
-            myMap.geoObjects.add(myPlacemark2);
         }
     };
 
