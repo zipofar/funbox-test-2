@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 
-const points = (state = {}, action) => {
+const points = (state = [], action) => {
     switch (action.type) {
         case 'ADD_POINT':
-            return state;
+            const data = action.payload;
+            return [...state, data];
         case 'REMOVE_POINT':
-            return state;
+            const id = action.payload;
+            const newState = state.filter(item => item.id !== id);
+            return newState;
         case 'REORDER_POINTS':
             return state;
         default:

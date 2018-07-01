@@ -6,27 +6,14 @@ export default class AddPoint extends React.Component
 
     onChangeValue = (e) => {
         const { value } = e.target;
-        const { ymaps } = this.props;
-
-        this.setState({ value, });
-
-        ymaps.suggest(value).then((items) => {
-            this.setState({ searchedPoints: items });
-        });
+        this.setState({ inputValue: value });
+        this.props.searchPoints(value, (points) => {this.setState({ searchedPoints: points })});
     };
 
     onSubmitPoint = (e) => {
         e.preventDefault();
         this.setState({ inputValue: '' });
-
-        const { ymaps } = this.props;
-
-        ymaps.geocode(this.state.currentPoint.value, { results: 1 })
-            .then((res) => {
-                const firstGeoObject = res.geoObjects.get(0);
-                const coords = firstGeoObject.geometry.getCoordinates();
-                console.log(coords)
-        });
+        this.props.addPoint(this.state.currentPoint);
     };
 
     showDropDownSearch = () => {
@@ -64,10 +51,9 @@ export default class AddPoint extends React.Component
     };
 
     render() {
-        console.log(this.state)
         return(
             <div className='row'>
-                <form onSubmit={this.onSubmitPoint} style={{width: '100%'}}>
+                <form onSubmit={this.onSubmitPoint} style={{width: '100%'}} autoComplete='off'>
                     <div className='form-row'>
                         <div className='col-sm-10'>
                             <input
