@@ -25,6 +25,11 @@ export const removePointFromStore = (id) => {
     };
 };
 
+export const reorderPointsInStore = (points) => ({
+    type: 'REORDER_POINTS',
+    payload: points,
+});
+
 export const addPoint = point => async (dispatch) => {
     try {
         const result = await ymaps.geocode(point.value, { results: 1 });

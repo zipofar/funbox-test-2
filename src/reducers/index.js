@@ -10,7 +10,8 @@ const points = (state = [], action) => {
             const newState = state.filter(item => item.id !== id);
             return newState;
         case 'REORDER_POINTS':
-            return state;
+            const reorderedState = action.payload;
+            return reorderedState;
         default:
             return state;
     }
