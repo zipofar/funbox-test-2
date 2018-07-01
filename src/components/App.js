@@ -1,7 +1,7 @@
 import React from 'react';
 import AddPoint from '../containers/AddPoint';
 import ListPoints from '../containers/ListPoints';
-import Map from './Map';
+import Map from '../containers/Map';
 
 export default class App extends React.Component
 {
@@ -21,7 +21,7 @@ export default class App extends React.Component
                 </div>
                 <div className='row'>
                     <div className='col'>
-                        <Map ymaps ={ this.props.ymaps } />
+                        <Map />
                     </div>
                 </div>
             </div>

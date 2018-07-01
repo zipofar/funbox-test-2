@@ -13,7 +13,7 @@ const store = createStore(RootReducer, compose(applyMiddleware(thunk), devtoolMi
 
 ReactDOM.render(
     <Provider store = { store }>
-        <App ymaps = { window.ymaps }/>
+        <App />
     </Provider>,
     document.getElementById('root'),
 );
