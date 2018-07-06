@@ -19,18 +19,27 @@ const addPointToStore = (data) => {
 };
 
 export const removePointFromStore = (id) => {
+
     return {
         type: 'REMOVE_POINT',
         payload: id,
     };
 };
 
+export const removePointDone = () => ({ type: 'REMOVE_POINT_DONE' });
+
 export const reorderPointsInStore = (points) => ({
     type: 'REORDER_POINTS',
     payload: points,
 });
 
+const addPointRequest = () => ({ type: 'ADD_POINT_REQUEST' });
+const addPointSuccess = () => ({ type: 'ADD_POINT_SUCCESS' });
+const addPointFailure = () => ({ type: 'ADD_POINT_FAILURE' });
+export const addPointClear = () => ({ type: 'ADD_POINT_CLEAR' });
+
 export const addPoint = point => async (dispatch) => {
+    dispatch(addPointRequest());
     try {
         const result = await ymaps.geocode(point.value, { results: 1 });
         const firstGeoObject = result.geoObjects.get(0);
@@ -43,7 +52,8 @@ export const addPoint = point => async (dispatch) => {
             id: _.uniqueId(),
         };
         dispatch(addPointToStore(data));
+        dispatch(addPointSuccess());
     } catch (e) {
-        
+        dispatch(addPointFailure());
     }
 };

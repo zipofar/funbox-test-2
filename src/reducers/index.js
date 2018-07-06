@@ -17,6 +17,35 @@ const points = (state = [], action) => {
     }
 };
 
+const addPointState = (state = '', action) => {
+    switch (action.type) {
+        case 'ADD_POINT_REQUEST':
+            return 'request';
+        case 'ADD_POINT_SUCCESS':
+            return 'success';
+        case 'ADD_POINT_FAILURE':
+            return 'failure';
+        case 'ADD_POINT_CLEAR':
+            return '';
+        default:
+            return state;
+    }
+};
+
+const removePointState = (state = { state: 'done' }, action) => {
+    switch (action.type) {
+        case 'REMOVE_POINT':
+            const id = action.payload;
+            return { id, state: 'remove'};
+        case 'REMOVE_POINT_DONE':
+            return { state: 'done' };
+        default:
+            return state;
+    }
+};
+
 export default combineReducers({
     points,
+    addPointState,
+    removePointState,
 });
