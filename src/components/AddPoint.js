@@ -48,6 +48,15 @@ export default class AddPoint extends React.Component
             currentPoint: this.state.searchedPoints[index],
             searchedPoints: [],
         });
+        this.focusSubmitButton();
+    };
+
+    focusSubmitButton = () => {
+        this.submitButton.focus();
+    }
+
+    onBlurPointInput = () => {
+        setTimeout(() => this.setState({ searchedPoints: [] }), 10);
     };
 
     render() {
@@ -62,11 +71,16 @@ export default class AddPoint extends React.Component
                                 id="inputPoint"
                                 placeholder="New point route"
                                 onChange={this.onChangeValue}
+                                onBlur={this.onBlurPointInput}
                                 value={this.state.inputValue}
                             />
                         </div>
                         <div className='col'>
-                            <button type="submit" className="btn btn-primary btn-block">Add</button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-block"
+                                ref={button => this.submitButton = button}
+                            >Add</button>
                         </div>
                         {this.showDropDownSearch()}
                     </div>
