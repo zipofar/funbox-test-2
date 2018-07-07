@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import {removePointDone} from "../actions";
+import {removePointDone, reorderPointsDone} from "../actions";
 
 export default class Map extends React.Component
 {
@@ -23,9 +23,17 @@ export default class Map extends React.Component
     componentDidUpdate() {
         if (this.props.addPointState === 'success') {
             this.addMarker();
+            this.props.addPointClear();
+            this.renderPolyLine();
         }
         if (this.props.removePointState.state === 'remove') {
             this.deleteMarker();
+            this.props.removePointDone();
+            this.renderPolyLine();
+        }
+        if (this.props.reorderPointsState.state === 'reorder') {
+            this.renderPolyLine();
+            this.props.reorderPointsDone();
         }
     }
 
@@ -35,8 +43,7 @@ export default class Map extends React.Component
      };
 
     addMarker = () => {
-        this.props.addPointClear();
-        this.renderPolyLine();
+
         const { ymaps } = window;
         const { points } = this.props;
         const { markers } = this.state;
@@ -90,8 +97,7 @@ export default class Map extends React.Component
     };
 
     deleteMarker = () => {
-        this.props.removePointDone();
-        this.renderPolyLine();
+
         const { markers } = this.state;
         const id = this.props.removePointState.id;
         const myPlacemark = markers[id];

@@ -27,6 +27,7 @@ export const removePointFromStore = (id) => {
 };
 
 export const removePointDone = () => ({ type: 'REMOVE_POINT_DONE' });
+export const reorderPointsDone = () => ({ type: 'REORDER_POINTS_DONE' });
 
 export const reorderPointsInStore = (points) => ({
     type: 'REORDER_POINTS',
