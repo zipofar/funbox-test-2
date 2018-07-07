@@ -17,8 +17,8 @@ export default class AddPoint extends React.Component
 
     onSubmitPoint = (e) => {
         e.preventDefault();
-        this.setState({ inputValue: '', searchedPoints: [] });
         this.props.addPoint(this.state.currentPoint);
+        this.setState({ inputValue: '', searchedPoints: [],  currentPoint: [] });
     };
 
     showDropDownSearch = () => {
