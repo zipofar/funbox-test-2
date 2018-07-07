@@ -66,7 +66,7 @@ export default class Map extends React.Component
                 // Слушаем событие окончания перетаскивания на метке.
                 myPlacemark.events.add('dragend', () => {
                     const newCoords = myPlacemark.geometry.getCoordinates();
-                    this.props.updatePoint(newCoords, item.id);
+                    this.props.updatePoint(newCoords, item.id, myPlacemark);
                 });
 
                 this.myMap.panTo(item.coords);

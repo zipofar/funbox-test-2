@@ -50,7 +50,7 @@ const updatePointFailure = () => ({ type: 'UPDATE_POINT_FAILURE' });
 export const updatePointDone = () => ({ type: 'UPDATE_POINT_DONE' });
 const updatePointToStore = (data) => ({ type: 'UPDATE_POINT', payload: data });
 
-export const updatePoint = (coords, idPoint) => async (dispatch) => {
+export const updatePoint = (coords, idPoint, marker) => async (dispatch) => {
     dispatch(updatePointRequest());
     try {
         const res = await ymaps.geocode(coords);
@@ -61,6 +61,11 @@ export const updatePoint = (coords, idPoint) => async (dispatch) => {
             coords: coords,
             id: idPoint,
         };
+
+        marker.properties.set({
+            balloonContent: firstGeoObject.getAddressLine(),
+        });
+
         dispatch(updatePointToStore(data));
         dispatch(updatePointSuccess());
     } catch (e) {
