@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import {removePointDone, reorderPointsDone} from "../actions";
 
 export default class Map extends React.Component
@@ -35,6 +35,10 @@ export default class Map extends React.Component
             this.renderPolyLine();
             this.props.reorderPointsDone();
         }
+        if (this.props.updatePointState === 'success') {
+            this.renderPolyLine();
+            this.props.updatePointDone();
+        }
     }
 
     renderMap = () => {
@@ -58,6 +62,13 @@ export default class Map extends React.Component
                     draggable: true,
                 });
                 this.myMap.geoObjects.add(myPlacemark);
+
+                // Слушаем событие окончания перетаскивания на метке.
+                myPlacemark.events.add('dragend', () => {
+                    const newCoords = myPlacemark.geometry.getCoordinates();
+                    this.props.updatePoint(newCoords, item.id);
+                });
+
                 this.myMap.panTo(item.coords);
                 this.setState({ markers: {...markers, [item.id]: myPlacemark} });
             }

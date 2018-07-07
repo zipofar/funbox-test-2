@@ -12,6 +12,12 @@ const points = (state = [], action) => {
         case 'REORDER_POINTS':
             const reorderedState = action.payload;
             return reorderedState;
+        case 'UPDATE_POINT':
+            const idPoint = action.payload.id;
+            const newPoints = state.map(item => {
+                return item.id === idPoint ? action.payload: item;
+            });
+            return newPoints;
         default:
             return state;
     }
@@ -26,6 +32,21 @@ const addPointState = (state = '', action) => {
         case 'ADD_POINT_FAILURE':
             return 'failure';
         case 'ADD_POINT_CLEAR':
+            return '';
+        default:
+            return state;
+    }
+};
+
+const updatePointState = (state = '', action) => {
+    switch (action.type) {
+        case 'UPDATE_POINT_REQUEST':
+            return 'request';
+        case 'UPDATE_POINT_SUCCESS':
+            return 'success';
+        case 'UPDATE_POINT_FAILURE':
+            return 'failure';
+        case 'UPDATE_POINT_DONE':
             return '';
         default:
             return state;
@@ -59,6 +80,7 @@ const reorderPointsState = (state = { state: 'done' }, action) => {
 export default combineReducers({
     points,
     addPointState,
+    updatePointState,
     removePointState,
     reorderPointsState,
 });

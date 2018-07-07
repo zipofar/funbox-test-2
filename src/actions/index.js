@@ -11,44 +11,29 @@ export const searchPoints = (value, cb) => async (dispatch) => {
     }
 };
 
-const addPointToStore = (data) => {
-    return {
-        type: 'ADD_POINT',
-        payload: data,
-    };
-};
-
-export const removePointFromStore = (id) => {
-
-    return {
-        type: 'REMOVE_POINT',
-        payload: id,
-    };
-};
-
+export const removePointFromStore = (id) => ({ type: 'REMOVE_POINT', payload: id });
 export const removePointDone = () => ({ type: 'REMOVE_POINT_DONE' });
-export const reorderPointsDone = () => ({ type: 'REORDER_POINTS_DONE' });
 
-export const reorderPointsInStore = (points) => ({
-    type: 'REORDER_POINTS',
-    payload: points,
-});
+export const reorderPointsDone = () => ({ type: 'REORDER_POINTS_DONE' });
+export const reorderPointsInStore = (points) => ({ type: 'REORDER_POINTS', payload: points });
 
 const addPointRequest = () => ({ type: 'ADD_POINT_REQUEST' });
 const addPointSuccess = () => ({ type: 'ADD_POINT_SUCCESS' });
 const addPointFailure = () => ({ type: 'ADD_POINT_FAILURE' });
 export const addPointClear = () => ({ type: 'ADD_POINT_CLEAR' });
+const addPointToStore = (data) => ({ type: 'ADD_POINT', payload: data });
 
 export const addPoint = point => async (dispatch) => {
     dispatch(addPointRequest());
     try {
-        const result = await ymaps.geocode(point.value, { results: 1 });
+        const pointAddress = point.value;
+        const result = await ymaps.geocode(pointAddress, { results: 1 });
         const firstGeoObject = result.geoObjects.get(0);
         const coords = firstGeoObject.geometry.getCoordinates();
 
         const data = {
             displayName: point.displayName,
-            value: point.value,
+            value: pointAddress,
             coords: coords,
             id: _.uniqueId(),
         };
@@ -57,4 +42,29 @@ export const addPoint = point => async (dispatch) => {
     } catch (e) {
         dispatch(addPointFailure());
     }
+};
+
+const updatePointRequest = () => ({ type: 'UPDATE_POINT_REQUEST' });
+const updatePointSuccess = () => ({ type: 'UPDATE_POINT_SUCCESS' });
+const updatePointFailure = () => ({ type: 'UPDATE_POINT_FAILURE' });
+export const updatePointDone = () => ({ type: 'UPDATE_POINT_DONE' });
+const updatePointToStore = (data) => ({ type: 'UPDATE_POINT', payload: data });
+
+export const updatePoint = (coords, idPoint) => async (dispatch) => {
+    dispatch(updatePointRequest());
+    try {
+        const res = await ymaps.geocode(coords);
+        const firstGeoObject = res.geoObjects.get(0);
+        const data = {
+            displayName: firstGeoObject.getAddressLine(),
+            value: firstGeoObject.getCountry() + ', ' + firstGeoObject.getAddressLine(),
+            coords: coords,
+            id: idPoint,
+        };
+        dispatch(updatePointToStore(data));
+        dispatch(updatePointSuccess());
+    } catch (e) {
+        dispatch(updatePointFailure());
+    }
+
 };

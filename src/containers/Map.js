@@ -1,20 +1,15 @@
 import { connect } from 'react-redux';
 import Map from '../components/Map';
-import { addPointClear, removePointDone, reorderPointsDone } from '../actions';
+import * as actions from '../actions';
 
 const mapStateToProps = state => ({
     points: state.points,
     addPointState: state.addPointState,
     removePointState: state.removePointState,
     reorderPointsState: state.reorderPointsState,
+    updatePointState: state.updatePointState,
 });
 
-const mapDispatchToProps = {
-    addPointClear,
-    removePointDone,
-    reorderPointsDone,
-};
-
-const container = connect(mapStateToProps, mapDispatchToProps)(Map);
+const container = connect(mapStateToProps, actions)(Map);
 
 export default container;
