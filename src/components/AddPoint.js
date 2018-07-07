@@ -2,17 +2,22 @@ import React from 'react';
 
 export default class AddPoint extends React.Component
 {
-    state = { inputValue: '', searchedPoints: [], currentPoint: [] };
+    state = {
+        inputValue: '',
+        searchedPoints: [],
+        currentPoint: [],
+        currentIndexSearch: null,
+    };
 
     onChangeValue = (e) => {
         const { value } = e.target;
-        this.setState({ inputValue: value });
+        this.setState({ inputValue: value, currentIndexSearch: null });
         this.props.searchPoints(value, (points) => {this.setState({ searchedPoints: points })});
     };
 
     onSubmitPoint = (e) => {
         e.preventDefault();
-        this.setState({ inputValue: '' });
+        this.setState({ inputValue: '', searchedPoints: [] });
         this.props.addPoint(this.state.currentPoint);
     };
 
@@ -59,6 +64,47 @@ export default class AddPoint extends React.Component
         setTimeout(() => this.setState({ searchedPoints: [] }), 10);
     };
 
+    keyUpInputPoint = (e) => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
+            return;
+        }
+        if (this.state.searchedPoints.length === 0) {
+            return;
+        }
+
+        let currentIndex = this.state.currentIndexSearch;
+
+        if (e.key === 'ArrowDown') {
+            if (currentIndex === null) {
+                currentIndex = 0;
+                this.setState({ currentIndexSearch: currentIndex });
+            } else if (this.state.searchedPoints.length - 1 > currentIndex) {
+                currentIndex += 1;
+                this.setState({ currentIndexSearch: currentIndex });
+            }
+
+            this.setState({
+                inputValue: this.state.searchedPoints[currentIndex].displayName,
+                currentPoint: this.state.searchedPoints[currentIndex],
+            });
+            return;
+        }
+
+        if (e.key === 'ArrowUp') {
+            if (currentIndex === null || currentIndex === 0) {
+                return;
+            } else if (currentIndex > 0) {
+                currentIndex -= 1;
+                this.setState({ currentIndexSearch: currentIndex });
+            }
+            this.setState({
+                inputValue: this.state.searchedPoints[currentIndex].displayName,
+                currentPoint: this.state.searchedPoints[currentIndex],
+            });
+            return;
+        }
+    };
+
     render() {
         return(
             <div className='row'>
@@ -72,6 +118,7 @@ export default class AddPoint extends React.Component
                                 placeholder="New point route"
                                 onChange={this.onChangeValue}
                                 onBlur={this.onBlurPointInput}
+                                onKeyUp={this.keyUpInputPoint}
                                 value={this.state.inputValue}
                             />
                         </div>
