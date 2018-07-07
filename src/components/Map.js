@@ -17,7 +17,7 @@ export default class Map extends React.Component
         }
         ymaps.ready(init.bind(this));
 
-        this.state = { markers: {} } ;
+        this.state = { markers: {}, polyLines: null } ;
     };
 
     componentDidUpdate() {
@@ -30,12 +30,13 @@ export default class Map extends React.Component
     }
 
     renderMap = () => {
-        console.log('render')
-        console.log(this.state)
+        //console.log('render')
+        //console.log(this.state)
      };
 
     addMarker = () => {
         this.props.addPointClear();
+        this.renderPolyLine();
         const { ymaps } = window;
         const { points } = this.props;
         const { markers } = this.state;
@@ -46,6 +47,8 @@ export default class Map extends React.Component
                 const myPlacemark = new ymaps.Placemark(item.coords, {
                     hintContent: `Point # ${i + 1}`,
                     balloonContent: item.displayName,
+                }, {
+                    draggable: true,
                 });
                 this.myMap.geoObjects.add(myPlacemark);
                 this.myMap.panTo(item.coords);
@@ -56,8 +59,39 @@ export default class Map extends React.Component
 
     };
 
+    renderPolyLine = () => {
+        const { ymaps } = window;
+        const { points } = this.props;
+        const coordsPoints = points.map(item => {
+            return item.coords;
+        });
+
+        const myPolyline = new ymaps.Polyline(coordsPoints, {
+            // Описываем свойства геообъекта.
+            // Содержимое балуна.
+            balloonContent: "Маршрут"
+        }, {
+            // Задаем опции геообъекта.
+            // Отключаем кнопку закрытия балуна.
+            balloonCloseButton: false,
+            // Цвет линии.
+            strokeColor: "#000000",
+            // Ширина линии.
+            strokeWidth: 4,
+            // Коэффициент прозрачности.
+            strokeOpacity: 0.5
+        });
+
+        if (this.state.polyLines !== null) {
+            this.myMap.geoObjects.remove(this.state.polyLines);
+        }
+        this.setState({ polyLines: myPolyline });
+        this.myMap.geoObjects.add(myPolyline);
+    };
+
     deleteMarker = () => {
         this.props.removePointDone();
+        this.renderPolyLine();
         const { markers } = this.state;
         const id = this.props.removePointState.id;
         const myPlacemark = markers[id];
