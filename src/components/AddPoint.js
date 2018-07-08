@@ -7,6 +7,7 @@ export default class AddPoint extends React.Component
         searchedPoints: [],
         currentPoint: [],
         currentIndexSearch: null,
+        hoverIndex: null,
     };
 
     onChangeValue = (e) => {
@@ -28,22 +29,36 @@ export default class AddPoint extends React.Component
         }
         return(
             <div className='form-row'>
-                <div className="dropdown-menu" style={{display: 'block'}}>
+                <div className="list-group">
                     { searchedPoints.map((item, i) => {
                         return(
-                            <a
+                            <button
                                 key={i}
-                                className="dropdown-item"
-                                href='#'
+                                type='button    '
+                                className={`list-group-item ${ this.state.hoverIndex === i ? 'active' : '' }`}
                                 onClick={this.onClickDropDownPoints(item.displayName, i)}
+                                onMouseEnter={this.toggleHoverFindedItems(i)}
+                                onMouseLeave={this.toggleHoverFindedItems(i)}
                             >
                                 {item.displayName}
-                            </a>
+                            </button>
                         );
                     }) }
                 </div>
             </div>
         );
+    };
+
+    toggleHoverFindedItems = index => (e) => {
+        if (index === this.state.hoverIndex) {
+            this.setState({ hoverIndex: null });
+        } else {
+            this.setState({
+                hoverIndex: index,
+                inputValue: this.state.searchedPoints[index].displayName,
+                currentPoint: this.state.searchedPoints[index],
+            });
+        }
     };
 
     onClickDropDownPoints = (value, index) => (e) => {
@@ -77,15 +92,15 @@ export default class AddPoint extends React.Component
         if (e.key === 'ArrowDown') {
             if (currentIndex === null) {
                 currentIndex = 0;
-                this.setState({ currentIndexSearch: currentIndex });
             } else if (this.state.searchedPoints.length - 1 > currentIndex) {
                 currentIndex += 1;
-                this.setState({ currentIndexSearch: currentIndex });
             }
 
             this.setState({
                 inputValue: this.state.searchedPoints[currentIndex].displayName,
                 currentPoint: this.state.searchedPoints[currentIndex],
+                hoverIndex: currentIndex,
+                currentIndexSearch: currentIndex,
             });
             return;
         }
@@ -95,11 +110,12 @@ export default class AddPoint extends React.Component
                 return;
             } else if (currentIndex > 0) {
                 currentIndex -= 1;
-                this.setState({ currentIndexSearch: currentIndex });
             }
             this.setState({
                 inputValue: this.state.searchedPoints[currentIndex].displayName,
                 currentPoint: this.state.searchedPoints[currentIndex],
+                hoverIndex: currentIndex,
+                currentIndexSearch: currentIndex,
             });
             return;
         }
