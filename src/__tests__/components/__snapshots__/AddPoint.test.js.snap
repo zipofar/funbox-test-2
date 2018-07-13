@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDownSearch element add search point to state and show "showDropDownSearch" 1`] = `
+<div
+  className="row"
+>
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          id="inputPoint"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          placeholder="New point route"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-primary btn-block"
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
+      <div
+        className="form-row"
+      >
+        <div
+          className="list-group"
+        >
+          <button
+            className="list-group-item "
+            key="0"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Moscow
+          </button>
+          <button
+            className="list-group-item "
+            key="1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Penza
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`DropDownSearch element mouseEnter on first searched point element, must toggle class element to active 1`] = `
+<div
+  className="row"
+>
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          id="inputPoint"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          placeholder="New point route"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-primary btn-block"
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
+      <div
+        className="form-row"
+      >
+        <div
+          className="list-group"
+        >
+          <button
+            className="list-group-item active"
+            key="0"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Moscow
+          </button>
+          <button
+            className="list-group-item "
+            key="1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Penza
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`DropDownSearch element mouseEnter on first searched point element, must toggle class element to active 2`] = `
+<div
+  className="row"
+>
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="col-sm-10"
+      >
+        <input
+          className="form-control"
+          id="inputPoint"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          placeholder="New point route"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-primary btn-block"
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
+      <div
+        className="form-row"
+      >
+        <div
+          className="list-group"
+        >
+          <button
+            className="list-group-item "
+            key="0"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Moscow
+          </button>
+          <button
+            className="list-group-item "
+            key="1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            type="button"
+          >
+            Penza
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;

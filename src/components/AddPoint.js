@@ -34,7 +34,7 @@ export default class AddPoint extends React.Component
                         return(
                             <button
                                 key={i}
-                                type='button    '
+                                type='button'
                                 className={`list-group-item ${ this.state.hoverIndex === i ? 'active' : '' }`}
                                 onClick={this.onClickDropDownPoints(item.displayName, i)}
                                 onMouseEnter={this.toggleHoverFindedItems(i)}
