@@ -89,7 +89,21 @@ describe('DropDownSearch element', () => {
         expect(comp.state().inputValue).toEqual('');
         expect(comp.state().currentPoint).toEqual([]);
         expect(comp.state().searchedPoints).toEqual([]);
+        expect(shallowToJson(comp)).toMatchSnapshot();
 
+    });
+
+    it('KeyDown and KeyUp on InputPoint must change class on selected point', () => {
+        comp = mount(<AddPoint />);
+        comp.setState({ searchedPoints, });
+
+        const inputPoint = comp.find('#inputPoint');
+        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
+        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
+        expect(shallowToJson(comp)).toMatchSnapshot();
+
+        inputPoint.simulate('keyUp', { key: 'ArrowUp' });
+        expect(shallowToJson(comp)).toMatchSnapshot();
     });
 
 });
