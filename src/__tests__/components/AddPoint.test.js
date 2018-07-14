@@ -69,4 +69,27 @@ describe('DropDownSearch element', () => {
         expect(comp.state().searchedPoints).toEqual([]);
     });
 
+    it('Submit form must change state', () => {
+
+        comp = mount(<AddPoint addPoint={ () => {} } />);
+        comp.setState({ searchedPoints, });
+
+        // Click on first point
+        const firstPoint = comp.find('button.list-group-item').at(0);
+        firstPoint.simulate('click', {
+            preventDefault: () => {},
+        });
+
+        //Click on submit
+        const form = comp.find('form');
+        form.simulate('submit', {
+            preventDefault: () => {},
+        });
+
+        expect(comp.state().inputValue).toEqual('');
+        expect(comp.state().currentPoint).toEqual([]);
+        expect(comp.state().searchedPoints).toEqual([]);
+
+    });
+
 });
