@@ -95,14 +95,6 @@ export default class AddPoint extends React.Component
             } else if (this.state.searchedPoints.length - 1 > currentIndex) {
                 currentIndex += 1;
             }
-
-            this.setState({
-                inputValue: this.state.searchedPoints[currentIndex].displayName,
-                currentPoint: this.state.searchedPoints[currentIndex],
-                hoverIndex: currentIndex,
-                currentIndexSearch: currentIndex,
-            });
-            return;
         }
 
         if (e.key === 'ArrowUp') {
@@ -111,14 +103,14 @@ export default class AddPoint extends React.Component
             } else if (currentIndex > 0) {
                 currentIndex -= 1;
             }
-            this.setState({
-                inputValue: this.state.searchedPoints[currentIndex].displayName,
-                currentPoint: this.state.searchedPoints[currentIndex],
-                hoverIndex: currentIndex,
-                currentIndexSearch: currentIndex,
-            });
-            return;
         }
+
+        this.setState({
+            inputValue: this.state.searchedPoints[currentIndex].displayName,
+            currentPoint: this.state.searchedPoints[currentIndex],
+            hoverIndex: currentIndex,
+            currentIndexSearch: currentIndex,
+        });
     };
 
     render() {
