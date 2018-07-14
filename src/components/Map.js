@@ -41,11 +41,6 @@ export default class Map extends React.Component
         }
     }
 
-    renderMap = () => {
-        //console.log('render')
-        //console.log(this.state)
-     };
-
     addMarker = () => {
 
         const { ymaps } = window;
@@ -130,9 +125,7 @@ export default class Map extends React.Component
 
     render() {
         return(
-            <div id="map" style={ { width: '100%', height: 400 } }>
-                {this.renderMap()}
-            </div>
+            <div id="map" style={ { width: '100%', height: 400 } }></div>
         );
     }
 }
