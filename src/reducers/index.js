@@ -23,6 +23,19 @@ const points = (state = [], action) => {
     }
 };
 
+const searchPointState = (state = '', action) => {
+    switch (action.type) {
+        case 'SEARCH_POINTS_REQUEST':
+            return 'request';
+        case 'SEARCH_POINTS_SUCCESS':
+            return 'success';
+        case 'SEARCH_POINTS_FAILURE':
+            return 'failure';
+        default:
+            return state;
+    }
+};
+
 const addPointState = (state = '', action) => {
     switch (action.type) {
         case 'ADD_POINT_REQUEST':
@@ -78,6 +91,7 @@ const reorderPointsState = (state = { state: 'done' }, action) => {
 };
 
 export default combineReducers({
+    searchPointState,
     points,
     addPointState,
     updatePointState,

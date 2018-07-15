@@ -2,6 +2,15 @@ import * as _ from "lodash";
 
 const ymaps = window.ymaps;
 
+export const getAddressByLetter = async (value) => {
+    try {
+        const result = await ymaps.suggest(value);
+        return Promise.resolve(result);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+};
+
 export const getCoords = async (point) => {
     try {
         const pointAddress = point.value;

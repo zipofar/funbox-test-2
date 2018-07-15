@@ -1,13 +1,17 @@
-import { getCoords, getAddress } from './geoHandlers';
+import { getCoords, getAddress, getAddressByLetter } from './geoHandlers';
 
-const ymaps = window.ymaps;
+const searchPointsRequest = () => ({ type: 'SEARCH_POINTS_REQUEST' });
+const searchPointsSuccess = () => ({ type: 'SEARCH_POINTS_SUCCESS' });
+const searchPointsFailure = () => ({ type: 'SEARCH_POINTS_FAILURE' });
 
-export const searchPoints = (value, cb) => async (dispatch) => {
+export const searchPoints = (value, cb, fnGetAddressByLetter = getAddressByLetter) => async (dispatch) => {
+    dispatch(searchPointsRequest());
     try {
-        const result = await ymaps.suggest(value);
+        const result = await fnGetAddressByLetter(value);
+        dispatch(searchPointsSuccess());
         cb(result);
     } catch (e) {
-
+        dispatch(searchPointsFailure());
     }
 };
 

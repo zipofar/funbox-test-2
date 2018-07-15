@@ -117,3 +117,22 @@ it('Should reorder points', () => {
     store.dispatch(actions.reorderPointsDone());
     expect(store.getState().reorderPointsState).toEqual({ state: 'done' });
 });
+
+it('Should set state success when eval searched points', async () => {
+    const store = createStore(RootReducer, applyMiddleware(thunk));
+    const mockSearchPoints = () => { return [] };
+    const cb = jest.fn();
+    await store.dispatch(actions.searchPoints('A', cb, mockSearchPoints));
+
+    expect(store.getState().searchPointState).toEqual('success');
+    expect(cb).toBeCalledWith([]);
+});
+
+it('Should set state failure when eval searched points', async () => {
+    const store = createStore(RootReducer, applyMiddleware(thunk));
+    const mockSearchPoints = () => { return Promise.reject(new Error()) };
+    const cb = jest.fn();
+    await store.dispatch(actions.searchPoints('A', cb, mockSearchPoints));
+
+    expect(store.getState().searchPointState).toEqual('failure');
+});
