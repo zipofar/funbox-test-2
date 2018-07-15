@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { getCoords, getAddress } from './geoHandlers';
 
 const ymaps = window.ymaps;
 
@@ -23,25 +23,6 @@ const addPointFailure = () => ({ type: 'ADD_POINT_FAILURE' });
 export const addPointClear = () => ({ type: 'ADD_POINT_CLEAR' });
 const addPointToStore = (data) => ({ type: 'ADD_POINT', payload: data });
 
-const getCoords = async (point) => {
-    try {
-        const pointAddress = point.value;
-        const result = await ymaps.geocode(pointAddress, { results: 1 });
-        const firstGeoObject = result.geoObjects.get(0);
-        const coords = firstGeoObject.geometry.getCoordinates();
-
-        const data = {
-            displayName: point.displayName,
-            value: pointAddress,
-            coords: coords,
-            id: _.uniqueId(),
-        };
-        return Promise.resolve(data);
-    } catch (e) {
-        return Promise.reject(e);
-    }
-};
-
 export const addPoint = (point, fnGetCoords = getCoords) => async (dispatch) => {
     dispatch(addPointRequest());
     try {
@@ -58,26 +39,6 @@ const updatePointSuccess = () => ({ type: 'UPDATE_POINT_SUCCESS' });
 const updatePointFailure = () => ({ type: 'UPDATE_POINT_FAILURE' });
 export const updatePointDone = () => ({ type: 'UPDATE_POINT_DONE' });
 const updatePointToStore = (data) => ({ type: 'UPDATE_POINT', payload: data });
-
-const getAddress = async (coords, idPoint, marker) => {
-    try {
-        const res = await ymaps.geocode(coords);
-        const firstGeoObject = res.geoObjects.get(0);
-        const data = {
-            displayName: firstGeoObject.getAddressLine(),
-            value: firstGeoObject.getCountry() + ', ' + firstGeoObject.getAddressLine(),
-            coords: coords,
-            id: idPoint,
-        };
-
-        marker.properties.set({
-            balloonContent: firstGeoObject.getAddressLine(),
-        });
-        return Promise.resolve(data);
-    } catch (e) {
-        return Promise.reject(e);
-    }
-};
 
 export const updatePoint = (coords, idPoint, marker, fnGetAddress = getAddress) => async (dispatch) => {
     dispatch(updatePointRequest());
