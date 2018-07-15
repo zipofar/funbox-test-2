@@ -56,16 +56,16 @@ describe('DropDownSearch element', () => {
         expect(shallowToJson(comp)).toMatchSnapshot();
     });
 
-    it('Click on first searched point element must change state', () => {
-        comp = mount(<AddPoint />);
+    it('Click on searched point element must change state', () => {
+        comp = mount(<AddPoint addPoint={ () => {} } />);
         comp.setState({ searchedPoints, });
 
         const firstPoint = comp.find('button.list-group-item').at(0);
         firstPoint.simulate('click', {
             preventDefault: () => {},
         });
-        expect(comp.state().inputValue).toEqual('Moscow');
-        expect(comp.state().currentPoint).toEqual({ displayName: 'Moscow' });
+        expect(comp.state().inputValue).toEqual('');
+        expect(comp.state().currentPoint).toEqual([]);
         expect(comp.state().searchedPoints).toEqual([]);
     });
 

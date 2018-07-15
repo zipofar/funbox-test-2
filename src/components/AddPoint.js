@@ -16,10 +16,14 @@ export default class AddPoint extends React.Component
         this.props.searchPoints(value, (points) => {this.setState({ searchedPoints: points })});
     };
 
-    onSubmitPoint = (e) => {
-        e.preventDefault();
+    savePoint = () => {
         this.props.addPoint(this.state.currentPoint);
         this.setState({ inputValue: '', searchedPoints: [],  currentPoint: [] });
+    };
+
+    onSubmitPoint = (e) => {
+        e.preventDefault();
+        this.savePoint();
     };
 
     showDropDownSearch = () => {
@@ -67,13 +71,8 @@ export default class AddPoint extends React.Component
             inputValue: value,
             currentPoint: this.state.searchedPoints[index],
             searchedPoints: [],
-        });
-        this.focusSubmitButton();
+        }, this.savePoint);
     };
-
-    focusSubmitButton = () => {
-        this.submitButton.focus();
-    }
 
     onBlurPointInput = () => {
         setTimeout(() => this.setState({ searchedPoints: [] }), 10);
