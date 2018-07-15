@@ -23,8 +23,7 @@ const addPointFailure = () => ({ type: 'ADD_POINT_FAILURE' });
 export const addPointClear = () => ({ type: 'ADD_POINT_CLEAR' });
 const addPointToStore = (data) => ({ type: 'ADD_POINT', payload: data });
 
-export const addPoint = point => async (dispatch) => {
-    dispatch(addPointRequest());
+const getCoords = async (point) => {
     try {
         const pointAddress = point.value;
         const result = await ymaps.geocode(pointAddress, { results: 1 });
@@ -37,6 +36,16 @@ export const addPoint = point => async (dispatch) => {
             coords: coords,
             id: _.uniqueId(),
         };
+        return Promise.resolve(data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+};
+
+export const addPoint = (point, fnGetCoords = getCoords) => async (dispatch) => {
+    dispatch(addPointRequest());
+    try {
+        const data = await fnGetCoords(point);
         dispatch(addPointToStore(data));
         dispatch(addPointSuccess());
     } catch (e) {
@@ -50,8 +59,7 @@ const updatePointFailure = () => ({ type: 'UPDATE_POINT_FAILURE' });
 export const updatePointDone = () => ({ type: 'UPDATE_POINT_DONE' });
 const updatePointToStore = (data) => ({ type: 'UPDATE_POINT', payload: data });
 
-export const updatePoint = (coords, idPoint, marker) => async (dispatch) => {
-    dispatch(updatePointRequest());
+const getAddress = async (coords, idPoint, marker) => {
     try {
         const res = await ymaps.geocode(coords);
         const firstGeoObject = res.geoObjects.get(0);
@@ -65,7 +73,16 @@ export const updatePoint = (coords, idPoint, marker) => async (dispatch) => {
         marker.properties.set({
             balloonContent: firstGeoObject.getAddressLine(),
         });
+        return Promise.resolve(data);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+};
 
+export const updatePoint = (coords, idPoint, marker, fnGetAddress = getAddress) => async (dispatch) => {
+    dispatch(updatePointRequest());
+    try {
+        const data = await fnGetAddress(coords, idPoint, marker);
         dispatch(updatePointToStore(data));
         dispatch(updatePointSuccess());
     } catch (e) {
