@@ -16,9 +16,13 @@ export default class AddPoint extends React.Component
         this.props.searchPoints(value, (points) => {this.setState({ searchedPoints: points })});
     };
 
+    resetState = () => {
+        this.setState({ inputValue: '', searchedPoints: [],  currentPoint: [] });
+    };
+
     savePoint = () => {
         this.props.addPoint(this.state.currentPoint);
-        this.setState({ inputValue: '', searchedPoints: [],  currentPoint: [] });
+        this.resetState();
     };
 
     onSubmitPoint = (e) => {
@@ -32,22 +36,24 @@ export default class AddPoint extends React.Component
             return null;
         }
         return(
-            <div className='form-row'>
-                <div className="list-group">
-                    { searchedPoints.map((item, i) => {
-                        return(
-                            <button
-                                key={i}
-                                type='button'
-                                className={`list-group-item ${ this.state.hoverIndex === i ? 'active' : '' }`}
-                                onClick={this.onClickDropDownPoints(item.displayName, i)}
-                                onMouseEnter={this.toggleHoverFindedItems(i)}
-                                onMouseLeave={this.toggleHoverFindedItems(i)}
-                            >
-                                {item.displayName}
-                            </button>
-                        );
-                    }) }
+            <div className='col-sm-12'>
+                <div id="searchedPoints" className='form-row'>
+                    <div className="list-group">
+                        { searchedPoints.map((item, i) => {
+                            return(
+                                <button
+                                    key={i}
+                                    type='button'
+                                    className={`list-group-item ${ this.state.hoverIndex === i ? 'active' : '' }`}
+                                    onClick={this.onClickDropDownPoints(item.displayName, i)}
+                                    onMouseEnter={this.toggleHoverFindedItems(i)}
+                                    onMouseLeave={this.toggleHoverFindedItems(i)}
+                                >
+                                    {item.displayName}
+                                </button>
+                            );
+                        }) }
+                    </div>
                 </div>
             </div>
         );
@@ -61,6 +67,7 @@ export default class AddPoint extends React.Component
                 hoverIndex: index,
                 inputValue: this.state.searchedPoints[index].displayName,
                 currentPoint: this.state.searchedPoints[index],
+                currentIndexSearch: index,
             });
         }
     };
@@ -75,10 +82,13 @@ export default class AddPoint extends React.Component
     };
 
     onBlurPointInput = () => {
-        setTimeout(() => this.setState({ searchedPoints: [] }), 10);
+        setTimeout(() => this.resetState(), 400);
     };
 
     keyUpInputPoint = (e) => {
+        if (e.key === 'Escape') {
+            this.resetState();
+        }
         if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
             return;
         }
@@ -117,7 +127,7 @@ export default class AddPoint extends React.Component
             <div className='row'>
                 <form onSubmit={this.onSubmitPoint} style={{width: '100%'}} autoComplete='off'>
                     <div className='form-row'>
-                        <div className='col-sm-10'>
+                        <div className='col-sm-12'>
                             <input
                                 type="text"
                                 className="form-control"
@@ -128,13 +138,6 @@ export default class AddPoint extends React.Component
                                 onKeyUp={this.keyUpInputPoint}
                                 value={this.state.inputValue}
                             />
-                        </div>
-                        <div className='col'>
-                            <button
-                                type="submit"
-                                className="btn btn-primary btn-block"
-                                ref={button => this.submitButton = button}
-                            >Add</button>
                         </div>
                         {this.showDropDownSearch()}
                     </div>

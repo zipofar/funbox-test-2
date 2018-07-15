@@ -73,7 +73,7 @@ export default class ListPoints extends React.Component
         }
 
         return(
-            <div>
+            <div id='selectedPoints'>
                 {this.showListPoints()}
             </div>
         );
