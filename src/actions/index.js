@@ -49,5 +49,4 @@ export const updatePoint = (coords, idPoint, marker, fnGetAddress = getAddress) 
     } catch (e) {
         dispatch(updatePointFailure());
     }
-
 };

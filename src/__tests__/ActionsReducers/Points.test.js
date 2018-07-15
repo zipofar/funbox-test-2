@@ -92,3 +92,28 @@ it('Should failure state when update point', async () => {
 
     expect(store.getState().updatePointState).toEqual('failure');
 });
+
+it('Should reorder points', () => {
+    const store = createStore(RootReducer, applyMiddleware(thunk));
+    const expectedPoints = [
+        {
+            displayName: "Moscow",
+            value: "Russia, Moscow",
+            coords: [12, 15],
+            id: 1,
+        },
+        {
+            displayName: "Penza",
+            value: "Russia, Penza",
+            coords: [22, 55],
+            id: 2,
+        },
+    ];
+
+    store.dispatch(actions.reorderPointsInStore(expectedPoints));
+    expect(store.getState().points).toEqual(expectedPoints);
+    expect(store.getState().reorderPointsState).toEqual({ state: 'reorder'});
+
+    store.dispatch(actions.reorderPointsDone());
+    expect(store.getState().reorderPointsState).toEqual({ state: 'done' });
+});

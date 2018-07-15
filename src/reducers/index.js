@@ -68,8 +68,8 @@ const removePointState = (state = { state: 'done' }, action) => {
 const reorderPointsState = (state = { state: 'done' }, action) => {
     switch (action.type) {
         case 'REORDER_POINTS':
-            const id = action.payload;
-            return { id, state: 'reorder'};
+            //const id = action.payload;
+            return { state: 'reorder'};
         case 'REORDER_POINTS_DONE':
             return { state: 'done' };
         default:
