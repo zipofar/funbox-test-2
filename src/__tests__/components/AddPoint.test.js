@@ -24,18 +24,19 @@ describe('DropDownSearch element', () => {
     const searchedPoints = [
         { displayName: 'Moscow'},
         { displayName: 'Penza'},
+        { displayName: 'Sochi'},
     ];
 
     beforeEach(() => {
         comp = shallow(<AddPoint />);
     });
 
-    it('add search point to state and show "showDropDownSearch"', () => {
+    it('Should render list finded addresses', () => {
         comp.setState({ searchedPoints, });
         expect(shallowToJson(comp)).toMatchSnapshot();
     });
 
-    it('mouse hover on first searched point must change state hoverIndex', () => {
+    it('Should toggle state.hoverIndex when mouse hover on list finded addresses', () => {
         comp.setState({ searchedPoints, });
 
         const firstPoint = comp.find('button.list-group-item').at(0);
@@ -46,14 +47,18 @@ describe('DropDownSearch element', () => {
         expect(comp.state().hoverIndex).toEqual(null);
     });
 
-    it('mouseEnter on first searched point element, must toggle class element to active', () => {
+    it('Should add and remove class "active" when mouse hover on element of list finded addresses', () => {
+
         //onMouseEnter
         comp.setState({ searchedPoints, hoverIndex: 0 });
-        expect(shallowToJson(comp)).toMatchSnapshot();
+        const firstAddressInactive = comp.find('button.list-group-item').at(0);
+        expect(shallowToJson(firstAddressInactive)).toMatchSnapshot();
 
         //onMouseLeave
         comp.setState({ searchedPoints, hoverIndex: null });
-        expect(shallowToJson(comp)).toMatchSnapshot();
+        const firstAddressActive = comp.find('button.list-group-item').at(0);
+        expect(shallowToJson(firstAddressActive)).toMatchSnapshot();
+
     });
 
     it('Click on searched point element must change state', () => {
@@ -93,17 +98,47 @@ describe('DropDownSearch element', () => {
 
     });
 
-    it('KeyDown and KeyUp on InputPoint must change class on selected point', () => {
+    it('KeyDown and KeyUp on InputPoint must toggle class on selected point', () => {
         comp = mount(<AddPoint />);
+
         comp.setState({ searchedPoints, });
 
         const inputPoint = comp.find('#inputPoint');
-        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
-        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
-        expect(shallowToJson(comp)).toMatchSnapshot();
 
+        //Activated first address
+        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
+        const searchedPoints1 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints1)).toMatchSnapshot();
+
+        //Activated second address
+        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
+        const searchedPoints2 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints2)).toMatchSnapshot();
+
+        //Again activated first address
         inputPoint.simulate('keyUp', { key: 'ArrowUp' });
-        expect(shallowToJson(comp)).toMatchSnapshot();
+        const searchedPoints3 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints3)).toMatchSnapshot();
+
+        //Activated third address like a onMouseEnter
+        comp.setState({ hoverIndex: 2, currentIndexSearch: 2 });
+        const searchedPoints4 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints4)).toMatchSnapshot();
+
+        //Activated second address
+        inputPoint.simulate('keyUp', { key: 'ArrowUp' });
+        const searchedPoints5 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints5)).toMatchSnapshot();
+
+        //Activated first address like a onMouseEnter
+        comp.setState({ hoverIndex: 0, currentIndexSearch: 0 });
+        const searchedPoints6 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints6)).toMatchSnapshot();
+
+        //Activated second address
+        inputPoint.simulate('keyUp', { key: 'ArrowDown' });
+        const searchedPoints7 = comp.find('#searchedPoints');
+        expect(shallowToJson(searchedPoints7)).toMatchSnapshot();
     });
 
 });

@@ -1,143 +1,401 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must change class on selected point 1`] = `
-<AddPoint>
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 1`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
   <div
-    className="row"
+    className="list-group"
   >
-    <form
-      autoComplete="off"
-      onSubmit={[Function]}
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
+    <button
+      className="list-group-item active"
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
     >
-      <div
-        className="form-row"
-      >
-        <div
-          className="col-sm-12"
-        >
-          <input
-            className="form-control"
-            id="inputPoint"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onKeyUp={[Function]}
-            placeholder="New point route"
-            type="text"
-            value="Penza"
-          />
-        </div>
-        <div
-          className="col-sm-12"
-        >
-          <div
-            className="form-row"
-            id="searchedPoints"
-          >
-            <div
-              className="list-group"
-            >
-              <button
-                className="list-group-item "
-                key="0"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                type="button"
-              >
-                Moscow
-              </button>
-              <button
-                className="list-group-item active"
-                key="1"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                type="button"
-              >
-                Penza
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
+      Moscow
+    </button>
+    <button
+      className="list-group-item "
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
   </div>
-</AddPoint>
+</div>
 `;
 
-exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must change class on selected point 2`] = `
-<AddPoint>
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 2`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
   <div
-    className="row"
+    className="list-group"
   >
-    <form
-      autoComplete="off"
-      onSubmit={[Function]}
-      style={
-        Object {
-          "width": "100%",
-        }
+    <button
+      className="list-group-item "
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item active"
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 3`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
+  <div
+    className="list-group"
+  >
+    <button
+      className="list-group-item active"
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item "
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 4`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
+  <div
+    className="list-group"
+  >
+    <button
+      className="list-group-item "
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item "
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item active"
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 5`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
+  <div
+    className="list-group"
+  >
+    <button
+      className="list-group-item "
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item active"
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 6`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
+  <div
+    className="list-group"
+  >
+    <button
+      className="list-group-item active"
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item "
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element KeyDown and KeyUp on InputPoint must toggle class on selected point 7`] = `
+<div
+  className="form-row"
+  id="searchedPoints"
+>
+  <div
+    className="list-group"
+  >
+    <button
+      className="list-group-item "
+      key="0"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Moscow
+    </button>
+    <button
+      className="list-group-item active"
+      key="1"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Penza
+    </button>
+    <button
+      className="list-group-item "
+      key="2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      Sochi
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DropDownSearch element Should add and remove class "active" when mouse hover on element of list finded addresses 1`] = `
+<button
+  className="list-group-item active"
+  key="0"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  type="button"
+>
+  Moscow
+</button>
+`;
+
+exports[`DropDownSearch element Should add and remove class "active" when mouse hover on element of list finded addresses 2`] = `
+<button
+  className="list-group-item "
+  key="0"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  type="button"
+>
+  Moscow
+</button>
+`;
+
+exports[`DropDownSearch element Should render list finded addresses 1`] = `
+<div
+  className="row"
+>
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "width": "100%",
       }
+    }
+  >
+    <div
+      className="form-row"
     >
       <div
-        className="form-row"
+        className="col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="inputPoint"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onKeyUp={[Function]}
+          placeholder="New point route"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="col-sm-12"
       >
         <div
-          className="col-sm-12"
-        >
-          <input
-            className="form-control"
-            id="inputPoint"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onKeyUp={[Function]}
-            placeholder="New point route"
-            type="text"
-            value="Moscow"
-          />
-        </div>
-        <div
-          className="col-sm-12"
+          className="form-row"
+          id="searchedPoints"
         >
           <div
-            className="form-row"
-            id="searchedPoints"
+            className="list-group"
           >
-            <div
-              className="list-group"
+            <button
+              className="list-group-item "
+              key="0"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              type="button"
             >
-              <button
-                className="list-group-item active"
-                key="0"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                type="button"
-              >
-                Moscow
-              </button>
-              <button
-                className="list-group-item "
-                key="1"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                type="button"
-              >
-                Penza
-              </button>
-            </div>
+              Moscow
+            </button>
+            <button
+              className="list-group-item "
+              key="1"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              type="button"
+            >
+              Penza
+            </button>
+            <button
+              className="list-group-item "
+              key="2"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              type="button"
+            >
+              Sochi
+            </button>
           </div>
         </div>
       </div>
-    </form>
-  </div>
-</AddPoint>
+    </div>
+  </form>
+</div>
 `;
 
 exports[`DropDownSearch element Submit form must change state 1`] = `
@@ -177,208 +435,4 @@ exports[`DropDownSearch element Submit form must change state 1`] = `
     </form>
   </div>
 </AddPoint>
-`;
-
-exports[`DropDownSearch element add search point to state and show "showDropDownSearch" 1`] = `
-<div
-  className="row"
->
-  <form
-    autoComplete="off"
-    onSubmit={[Function]}
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <div
-      className="form-row"
-    >
-      <div
-        className="col-sm-12"
-      >
-        <input
-          className="form-control"
-          id="inputPoint"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onKeyUp={[Function]}
-          placeholder="New point route"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-sm-12"
-      >
-        <div
-          className="form-row"
-          id="searchedPoints"
-        >
-          <div
-            className="list-group"
-          >
-            <button
-              className="list-group-item "
-              key="0"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Moscow
-            </button>
-            <button
-              className="list-group-item "
-              key="1"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Penza
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-`;
-
-exports[`DropDownSearch element mouseEnter on first searched point element, must toggle class element to active 1`] = `
-<div
-  className="row"
->
-  <form
-    autoComplete="off"
-    onSubmit={[Function]}
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <div
-      className="form-row"
-    >
-      <div
-        className="col-sm-12"
-      >
-        <input
-          className="form-control"
-          id="inputPoint"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onKeyUp={[Function]}
-          placeholder="New point route"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-sm-12"
-      >
-        <div
-          className="form-row"
-          id="searchedPoints"
-        >
-          <div
-            className="list-group"
-          >
-            <button
-              className="list-group-item active"
-              key="0"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Moscow
-            </button>
-            <button
-              className="list-group-item "
-              key="1"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Penza
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-`;
-
-exports[`DropDownSearch element mouseEnter on first searched point element, must toggle class element to active 2`] = `
-<div
-  className="row"
->
-  <form
-    autoComplete="off"
-    onSubmit={[Function]}
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-  >
-    <div
-      className="form-row"
-    >
-      <div
-        className="col-sm-12"
-      >
-        <input
-          className="form-control"
-          id="inputPoint"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onKeyUp={[Function]}
-          placeholder="New point route"
-          type="text"
-          value=""
-        />
-      </div>
-      <div
-        className="col-sm-12"
-      >
-        <div
-          className="form-row"
-          id="searchedPoints"
-        >
-          <div
-            className="list-group"
-          >
-            <button
-              className="list-group-item "
-              key="0"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Moscow
-            </button>
-            <button
-              className="list-group-item "
-              key="1"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              type="button"
-            >
-              Penza
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
 `;
