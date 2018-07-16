@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import { uniqueId } from "lodash";
 
 const ymaps = window.ymaps;
 
@@ -22,7 +22,7 @@ export const getCoords = async (point) => {
             displayName: point.displayName,
             value: pointAddress,
             coords: coords,
-            id: _.uniqueId(),
+            id: uniqueId(),
         };
         return Promise.resolve(data);
     } catch (e) {

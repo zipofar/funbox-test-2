@@ -20,7 +20,7 @@ export default class App extends React.Component
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='col'>
+                    <div id="mapContainer" className='col'>
                         <Map />
                     </div>
                 </div>

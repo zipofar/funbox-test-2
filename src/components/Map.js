@@ -124,8 +124,9 @@ export default class Map extends React.Component
     };
 
     render() {
+        const windowHeight = window.innerHeight - 50;
         return(
-            <div id="map" style={ { width: '100%', height: 400 } }></div>
+            <div id="map" style={ { width: '100%', height: windowHeight } }></div>
         );
     }
 }
