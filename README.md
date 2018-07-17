@@ -1,5 +1,5 @@
 # Тестовое задание для компании Funbox
-Livedemo http://react-map.zipofar.ru
+Livedemo http://funbox.zipofar.ru/
 
 ## Вопрос №1
 Расскажите, чем, на ваш взгляд, отличается хорошее клиентское приложение от
