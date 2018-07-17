@@ -22,7 +22,7 @@ export default class AddPoint extends React.Component
 
     render() {
         return(
-            <div className='row'>
+            <div id='container-input-point' className='row'>
                 <form onSubmit={this.onSubmitPoint} style={{width: '100%'}} autoComplete='off'>
                     <div className='form-row'>
                         <div className='col-sm-12'>

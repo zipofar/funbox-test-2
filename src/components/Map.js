@@ -47,7 +47,6 @@ export default class Map extends React.Component
     }
 
     addMarker = () => {
-
         const { ymaps } = window;
         const { points } = this.props;
         const { markers } = this.state;

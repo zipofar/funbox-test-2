@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match to snapshot AddPoint 1`] = `
+<div
+  className="row"
+  id="container-input-point"
+>
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="inputPoint"
+          onChange={[Function]}
+          placeholder="Enter name point"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </form>
+</div>
+`;
