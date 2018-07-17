@@ -4,7 +4,6 @@ const points = (state = [], action) => {
     switch (action.type) {
         case 'ADD_POINT':
             const data = action.payload;
-            console.log(data)
             return [...state, data];
         case 'REMOVE_POINT':
             const id = action.payload;
@@ -33,19 +32,6 @@ const mapCenterCoords = (state = [55.76, 37.64], action) => {
     }
 };
 
-const searchPointState = (state = '', action) => {
-    switch (action.type) {
-        case 'SEARCH_POINTS_REQUEST':
-            return 'request';
-        case 'SEARCH_POINTS_SUCCESS':
-            return 'success';
-        case 'SEARCH_POINTS_FAILURE':
-            return 'failure';
-        default:
-            return state;
-    }
-};
-
 const addPointState = (state = '', action) => {
     switch (action.type) {
         case 'ADD_POINT_SUCCESS':
@@ -59,12 +45,8 @@ const addPointState = (state = '', action) => {
 
 const updatePointState = (state = '', action) => {
     switch (action.type) {
-        case 'UPDATE_POINT_REQUEST':
-            return 'request';
         case 'UPDATE_POINT_SUCCESS':
             return 'success';
-        case 'UPDATE_POINT_FAILURE':
-            return 'failure';
         case 'UPDATE_POINT_DONE':
             return '';
         default:
@@ -98,7 +80,6 @@ const reorderPointsState = (state = { state: 'done' }, action) => {
 
 export default combineReducers({
     mapCenterCoords,
-    searchPointState,
     points,
     addPointState,
     updatePointState,
