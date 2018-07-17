@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
     removePointState: state.removePointState,
     reorderPointsState: state.reorderPointsState,
     updatePointState: state.updatePointState,
+    mapCenterCoords: state.mapCenterCoords,
 });
 
 const container = connect(mapStateToProps, actions)(Map);

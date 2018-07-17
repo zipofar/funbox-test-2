@@ -11,8 +11,13 @@ export default class Map extends React.Component
 
         function init(){
             this.myMap =  new ymaps.Map("map", {
-                center: [55.76, 37.64],
+                center: this.props.mapCenterCoords,
                 zoom: 9
+            });
+
+            this.myMap.events.add('actionend', (e) => {
+                const coords = this.myMap.getCenter();
+                this.props.setCenterCoords(coords);
             });
         }
         ymaps.ready(init.bind(this));

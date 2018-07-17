@@ -23,6 +23,15 @@ const points = (state = [], action) => {
     }
 };
 
+const mapCenterCoords = (state = [55.76, 37.64], action) => {
+    switch (action.type) {
+        case 'SET_COORDS':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 const searchPointState = (state = '', action) => {
     switch (action.type) {
         case 'SEARCH_POINTS_REQUEST':
@@ -91,6 +100,7 @@ const reorderPointsState = (state = { state: 'done' }, action) => {
 };
 
 export default combineReducers({
+    mapCenterCoords,
     searchPointState,
     points,
     addPointState,

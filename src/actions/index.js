@@ -1,5 +1,7 @@
 import { getCoords, getAddress, getAddressByLetter } from './geoHandlers';
 
+export const setCenterCoords = (coords) => ({ type: 'SET_COORDS', payload: coords });
+
 const searchPointsRequest = () => ({ type: 'SEARCH_POINTS_REQUEST' });
 const searchPointsSuccess = () => ({ type: 'SEARCH_POINTS_SUCCESS' });
 const searchPointsFailure = () => ({ type: 'SEARCH_POINTS_FAILURE' });
