@@ -53,7 +53,7 @@ export default class ListPoints extends React.Component
                                                     className='btn'
                                                     onClick={this.onClickButtonDelete(item.id)}
                                                 >X</button>
-                                                {item.displayName}
+                                                {item.namePoint}
                                             </li>
                                         )}
                                     </Draggable>
@@ -84,6 +84,5 @@ const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-
     return result;
 };

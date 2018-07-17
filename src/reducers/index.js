@@ -4,6 +4,7 @@ const points = (state = [], action) => {
     switch (action.type) {
         case 'ADD_POINT':
             const data = action.payload;
+            console.log(data)
             return [...state, data];
         case 'REMOVE_POINT':
             const id = action.payload;
@@ -47,13 +48,9 @@ const searchPointState = (state = '', action) => {
 
 const addPointState = (state = '', action) => {
     switch (action.type) {
-        case 'ADD_POINT_REQUEST':
-            return 'request';
         case 'ADD_POINT_SUCCESS':
             return 'success';
-        case 'ADD_POINT_FAILURE':
-            return 'failure';
-        case 'ADD_POINT_CLEAR':
+        case 'ADD_POINT_DONE':
             return '';
         default:
             return state;

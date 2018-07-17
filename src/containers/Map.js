@@ -4,11 +4,11 @@ import * as actions from '../actions';
 
 const mapStateToProps = state => ({
     points: state.points,
+    mapCenterCoords: state.mapCenterCoords,
     addPointState: state.addPointState,
     removePointState: state.removePointState,
     reorderPointsState: state.reorderPointsState,
     updatePointState: state.updatePointState,
-    mapCenterCoords: state.mapCenterCoords,
 });
 
 const container = connect(mapStateToProps, actions)(Map);

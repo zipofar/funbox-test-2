@@ -28,13 +28,13 @@ export default class Map extends React.Component
     componentDidUpdate() {
         if (this.props.addPointState === 'success') {
             this.addMarker();
-            this.props.addPointClear();
             this.renderPolyLine();
+            this.props.addPointDone();
         }
         if (this.props.removePointState.state === 'remove') {
             this.deleteMarker();
-            this.props.removePointDone();
             this.renderPolyLine();
+            this.props.removePointDone();
         }
         if (this.props.reorderPointsState.state === 'reorder') {
             this.renderPolyLine();
@@ -56,8 +56,8 @@ export default class Map extends React.Component
 
             if (typeof markers[item.id] === 'undefined') {
                 const myPlacemark = new ymaps.Placemark(item.coords, {
-                    hintContent: `Point # ${i + 1}`,
-                    balloonContent: item.displayName,
+                    hintContent: item.namePoint,
+                    balloonContent: item.namePoint,
                 }, {
                     draggable: true,
                 });
@@ -66,23 +66,22 @@ export default class Map extends React.Component
                 // Слушаем событие окончания перетаскивания на метке.
                 myPlacemark.events.add('dragend', () => {
                     const newCoords = myPlacemark.geometry.getCoordinates();
-                    this.props.updatePoint(newCoords, item.id, myPlacemark);
+                    this.props.updatePointToStore({ namePoint: item.namePoint, coords: newCoords, id: item.id });
+                    this.props.updatePointSuccess();
                 });
 
+                //Move map to point
                 this.myMap.panTo(item.coords);
                 this.setState({ markers: {...markers, [item.id]: myPlacemark} });
             }
 
         });
-
     };
 
     renderPolyLine = () => {
         const { ymaps } = window;
         const { points } = this.props;
-        const coordsPoints = points.map(item => {
-            return item.coords;
-        });
+        const coordsPoints = points.map(item => item.coords);
 
         const myPolyline = new ymaps.Polyline(coordsPoints, {
             // Описываем свойства геообъекта.
@@ -110,7 +109,7 @@ export default class Map extends React.Component
     deleteMarker = () => {
 
         const { markers } = this.state;
-        const id = this.props.removePointState.id;
+        const { id } = this.props.removePointState;
         const myPlacemark = markers[id];
 
         this.myMap.geoObjects.remove(myPlacemark);
@@ -120,11 +119,9 @@ export default class Map extends React.Component
 
         const points = this.props.points;
 
-        if (points.length !== 0) {
+        if (points.length > 1) {
             const lastPoint = points[points.length - 1];
             this.myMap.panTo(lastPoint.coords);
-        } else {
-            this.myMap.panTo(this.myMap.getCenter());
         }
     };
 
