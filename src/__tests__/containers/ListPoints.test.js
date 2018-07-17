@@ -3,7 +3,6 @@ import { shallow, configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import ListPoints from '../../containers/ListPoints';
-import { Provider } from 'react-redux';
 import { createStore } from "redux";
 import RootReducer from "../../reducers";
 import * as actions from '../../actions';
@@ -17,7 +16,7 @@ describe('Should render two points and delete it', () => {
     store.dispatch(actions.addPointToStore(point1));
     store.dispatch(actions.addPointToStore(point2));
 
-    const wrapper = mount(<Provider store = { store }><ListPoints /></Provider>);
+    const wrapper = mount(<ListPoints store = { store }/>);
 
     it('Should contain 2 points', () => {
         const listPoints = wrapper.find('.list-group-item');

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should match to snapshot AddPoint 1`] = `
+exports[`Should add two points to store Should match to snapshot AddPoint 1`] = `
 <div
   className="row"
   id="container-input-point"

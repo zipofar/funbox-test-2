@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Map from '../../containers/Map';
 import { createStore } from "redux";
@@ -34,7 +34,7 @@ window.ymaps = {
 it('Should render Map', () => {
     const store = createStore(RootReducer);
     const point1 = { coords: [55.76, 37.64], namePoint: 'A', id: 1 };
-    const wrapper = shallow(<Map store = { store } />);
+    const wrapper = mount(<Map store = { store } />);
     store.dispatch(actions.addPointToStore(point1));
     store.dispatch(actions.addPointSuccess());
 });
