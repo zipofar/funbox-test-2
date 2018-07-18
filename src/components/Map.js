@@ -4,7 +4,8 @@ import {omit} from 'lodash';
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    const {ymaps} = window;
+
+    const { ymaps } = props;
 
     function init() {
       this.myMap = new ymaps.Map("map", {
@@ -47,9 +48,9 @@ class Map extends React.Component {
   }
 
   addMarker = () => {
-    const {ymaps} = window;
-    const {points} = this.props;
-    const {markers} = this.state;
+    const { ymaps } = this.props;
+    const { points } = this.props;
+    const { markers } = this.state;
 
     points.forEach((item, i) => {
       if (typeof markers[item.id] === 'undefined') {
@@ -77,8 +78,8 @@ class Map extends React.Component {
   };
 
   renderPolyLine = () => {
-    const {ymaps} = window;
-    const {points} = this.props;
+    const { ymaps } = this.props;
+    const { points } = this.props;
     const coordsPoints = points.map(item => item.coords);
     const myPolyline = new ymaps.Polyline(coordsPoints, {
       // Описываем свойства геообъекта.
@@ -105,14 +106,14 @@ class Map extends React.Component {
   };
 
   deleteMarker = () => {
-    const {markers} = this.state;
-    const {id} = this.props.removePointState;
+    const { markers } = this.state;
+    const { id } = this.props.removePointState;
     const myPlacemark = markers[id];
 
     this.myMap.geoObjects.remove(myPlacemark);
 
     const newMarkers = omit(markers, [id]);
-    this.setState({markers: {...newMarkers}});
+    this.setState({ markers: { ...newMarkers } });
 
     const points = this.props.points;
 
@@ -125,7 +126,7 @@ class Map extends React.Component {
   render() {
     const windowHeight = window.innerHeight - 50;
     return (
-      <div id="map" style={{width: '100%', height: windowHeight}}></div>
+      <div id="map" style={ { width: '100%', height: windowHeight } }></div>
     );
   }
 }

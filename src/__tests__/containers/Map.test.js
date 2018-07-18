@@ -8,7 +8,7 @@ import * as actions from '../../actions/index';
 
 configure({ adapter: new Adapter() });
 
-window.ymaps = {
+const ymaps = {
     ready: (fn) => {fn()},
     Map: function () {
         this.geoObjects = {
@@ -34,7 +34,7 @@ window.ymaps = {
 it('Should render Map', () => {
     const store = createStore(RootReducer);
     const point1 = { coords: [55.76, 37.64], namePoint: 'A', id: 1 };
-    const wrapper = mount(<Map store = { store } />);
+    const wrapper = mount(<Map store = { store } ymaps = { ymaps } />);
     store.dispatch(actions.addPointToStore(point1));
     store.dispatch(actions.addPointSuccess());
 });

@@ -20,7 +20,7 @@ class App extends React.Component {
         </div>
         <div className='row'>
           <div id="mapContainer" className='col'>
-            <Map/>
+            <Map ymaps = { this.props.ymaps }/>
           </div>
         </div>
       </div>

@@ -15,9 +15,11 @@ if (process.env.NODE_ENV === 'development') {
   store = createStore(RootReducer, compose(applyMiddleware(thunk)));
 }
 
+const {ymaps} = window;
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App/>
+  <Provider store={ store }>
+    <App ymaps = { ymaps }/>
   </Provider>,
   document.getElementById('root'),
 );
