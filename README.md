@@ -4,7 +4,11 @@
 # Тестовое задание для компании Funbox
 В основе лежит create-react-app https://github.com/facebook/create-react-app
 
-Livedemo http://funbox.zipofar.ru/
+Livedemo 
+
+http://funbox.zipofar.ru/
+
+https://glacial-taiga-70430.herokuapp.com/
 
 ### Run
 
