@@ -1,4 +1,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d371a38ac61a4e1f73a8/maintainability)](https://codeclimate.com/github/zipofar/funbox-test-2/maintainability)
+[![Build Status](https://travis-ci.org/zipofar/funbox-test-2.svg?branch=master)](https://travis-ci.org/zipofar/funbox-test-2)
 
 # Тестовое задание для компании Funbox
 В основе лежит create-react-app https://github.com/facebook/create-react-app
