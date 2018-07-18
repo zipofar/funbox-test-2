@@ -1,5 +1,23 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/d371a38ac61a4e1f73a8/maintainability)](https://codeclimate.com/github/zipofar/funbox-test-2/maintainability)
+
 # Тестовое задание для компании Funbox
+В основе лежит create-react-app https://github.com/facebook/create-react-app
+
 Livedemo http://funbox.zipofar.ru/
+
+### Run
+
+```sh
+$ make start
+```
+Go to [http://localhost:3000/](http://localhost:3000/)
+
+### Run Test
+
+```sh
+$ make test
+```
+
 
 ## Вопрос №1
 Расскажите, чем, на ваш взгляд, отличается хорошее клиентское приложение от
