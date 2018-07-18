@@ -3,8 +3,8 @@ import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Map from '../../containers/Map';
 import { createStore } from "redux";
-import RootReducer from "../../reducers";
-import * as actions from '../../actions';
+import RootReducer from "../../reducers/index";
+import * as actions from '../../actions/index';
 
 configure({ adapter: new Adapter() });
 

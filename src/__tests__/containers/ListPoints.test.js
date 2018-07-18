@@ -3,8 +3,8 @@ import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import ListPoints from '../../containers/ListPoints';
 import { createStore } from "redux";
-import RootReducer from "../../reducers";
-import * as actions from '../../actions';
+import RootReducer from "../../reducers/index";
+import * as actions from '../../actions/index';
 
 configure({ adapter: new Adapter() });
 

@@ -4,8 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import { shallowToJson } from 'enzyme-to-json';
 import AddPoint from '../../containers/AddPoint';
 import { createStore } from "redux";
-import RootReducer from "../../reducers";
-import * as actions from '../../actions';
+import RootReducer from "../../reducers/index";
+import * as actions from '../../actions/index';
 
 configure({ adapter: new Adapter() });
 
