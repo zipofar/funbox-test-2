@@ -8,7 +8,7 @@ Livedemo
 
 http://funbox.zipofar.ru/
 
-https://glacial-taiga-70430.herokuapp.com/
+https://glacial-taiga-70430.herokuapp.com/ usually sleep, please wait
 
 ### Run
 
