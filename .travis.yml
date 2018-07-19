@@ -5,3 +5,7 @@ node_js:
 cache:
   directories:
   - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: 37b55630-aaf7-4189-b599-c77622b5795d
