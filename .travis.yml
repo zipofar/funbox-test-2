@@ -8,4 +8,7 @@ cache:
 deploy:
   provider: heroku
   api_key:
-    secure: 37b55630-aaf7-4189-b599-c77622b5795d
+    secure: mF76zC6l9AwOwAwuhHihkprmnz7ZtyrqRf4BW1vAq8RSo1pZjzq8pZOkcOhAqvEZnkB0nR2p2Fxc6O831WAr/XD/g0RxMm8YFSAU1qHvhh3iwQhs72BzmwtSbGXnXLSV5yo6dcalk7TUWFyeChhFZp1Iur4ms/ZldRbFFS4RGFFjD21wXYBfwrMrSEbKpNyw6O2E13hKl6lB5gA5z+YrKZL/VaF8hTSHvmEZAfVKvnPNxyFKKhGl29Fws8GkdB/cMaFkW1hb1LEOjFKhAxDrhBFzi6jTFmsp4poUaBg/Kz10CArYvXovyLRE8tvGee7lffxeXdf8d0Ax+QXeZmQlixwShzngO1QXNBVQByrG9BwdisnSuVMkpguNATPJKDVeGeDJ6yHQW3pFjzjrm7K1HRG00S5HVZm54bWk27vrrMPJ+68P4eJUeZmtUA47CBfJydJXGCWF5oy0G3ksyjKFxeHNiPFnwnfKgSbDKLBhzh21g6XGFvbVlXcPXgr8KQtuRmBNHpNJsFm2CxbM2EVwVstvU2V4Znth/eRKlqd2oy6mxFm6eVVxx0Ja76uAW5u0SaHognAsVUvkDIeagBjS+Q4xaVyNhSKgdR+zCq+d0jzG43hh/C/yl3lGf0m8Rkk3+S2MuPsPb3p5No08nbsqCtOARJmxEK9CCGY4wa3gnSE=
+  app: glacial-taiga-70430
+  on:
+    repo: zipofar/funbox-test-2
